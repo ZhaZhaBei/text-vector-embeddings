@@ -39,7 +39,25 @@ Deployment notes:
     dedupeWarningThreshold: 0.75
     annotateThreshold: 0.65
     jobMatchingThreshold: 0.75
+    redactPrivateRepoComments: false
 ```
+
+### Private comment storage
+
+`redactPrivateRepoComments` defaults to `false`: eligible private comment text and
+webhook payloads are retained in the configured database. These comments can be
+embedded by Voyage immediately or by the deferred embedding queue, according to
+the existing queue settings. Public comments use the same storage behavior.
+
+Set `redactPrivateRepoComments: true` to store private comments with `markdown`,
+`payload`, and `embedding` set to `null`. The rule applies to creation and edits of
+issue comments, pull request comments, review comments, and pull request reviews.
+It also applies when an edit creates a previously missing comment document.
+
+The setting affects subsequent writes; it does not restore previously redacted
+content or remove previously captured content without an edit. Private issue and
+pull request descriptions retain their existing redaction policy. Command-like
+and short-content embedding filters still apply.
 
 ## Recommendations
 

@@ -19,6 +19,10 @@ export const pluginSettingsSchema = T.Object(
     alwaysRecommend: T.Optional(
       T.Number({ default: 0, description: "If set to a value greater than 0, the bot will always recommend contributors, regardless of the similarity score." })
     ),
+    redactPrivateRepoComments: T.Boolean({
+      default: false,
+      description: "When true, redacts markdown, payload and embeddings for comments from private repositories.",
+    }),
     demoFlag: T.Boolean({ default: false, description: "When true, disables storing issues and comments in the database." }),
   },
   { default: {} }
