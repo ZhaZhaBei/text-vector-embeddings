@@ -701,6 +701,7 @@ describe("Plugin tests", () => {
         dedupeMatchThreshold: 0.95,
         jobMatchingThreshold: 0.95,
         annotateThreshold: 0.65,
+        redactPrivateRepoComments: false,
         demoFlag: false,
       },
       command: null,
